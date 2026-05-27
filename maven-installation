@@ -9,30 +9,30 @@ sudo yum install java-17-amazon-corretto -y
 # Install wget and tar
 sudo yum install wget tar -y
 
-# Move to /opt directory
+# Go to /opt
 cd /opt
 
-# Download Maven 3.9.9
+# Download Maven
 sudo wget https://archive.apache.org/dist/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz
 
 # Extract Maven
-sudo tar -xvzf apache-maven-3.9.9-bin.tar.gz
+sudo tar -xzf apache-maven-3.9.9-bin.tar.gz
 
-# Rename Maven directory
+# Rename directory
 sudo mv apache-maven-3.9.9 maven
 
 # Configure environment variables
 sudo tee /etc/profile.d/maven.sh > /dev/null <<EOF
 export M2_HOME=/opt/maven
-export PATH=\${M2_HOME}/bin:\${PATH}
+export PATH=\$M2_HOME/bin:\$PATH
 EOF
 
-# Give execute permission
+# Permission
 sudo chmod +x /etc/profile.d/maven.sh
 
-# Load variables
+# Load environment variables
 source /etc/profile.d/maven.sh
 
-# Verify installations
+# Verify
 java -version
 mvn -v
